@@ -6,9 +6,12 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
   this.step = this.step.bind(this);
-  this.step(timeBetweenSteps);
-
-  this.setPosition(top, left)
+  this.setPosition = this.setPosition.bind(this);
+  this.timeBetweenSteps = timeBetweenSteps;
+  this.step(this.timeBetweenSteps);
+  this.top = top;
+  this.left = left;
+  this.setPosition(this.top, this.left);
 
   //this.step(); //should we invoke this here?
 
@@ -23,15 +26,15 @@ var makeDancer = function(top, left, timeBetweenSteps) {
 makeDancer.prototype.step = function(timeBetweenSteps) {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  console.log(timeBetweenSteps);
+  //console.log(this.timeBetweenSteps);
   //var context = this;
-  setTimeout(this.step, timeBetweenSteps);
+  setTimeout(this.step, this.timeBetweenSteps);
 };
 
 makeDancer.prototype.setPosition = function(top, left) {
   var styleSettings = {
-    top: top,
-    left: left
+    top: this.top,
+    left: this.left
   };
   this.$node.css(styleSettings);
 };

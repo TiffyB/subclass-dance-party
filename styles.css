@@ -25,3 +25,62 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+/*
+.dancer:hover {
+  border:30px solid red;
+  border-radius:30px;
+  position:absolute;
+}
+*/
+.bouncyDancer.dancer{
+  border:10px solid blue;
+  border-radius:none;
+  position:absolute;
+  animation-duration: 5s;
+
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+
+}
+/*
+.bouncyDancer:hover {
+  border: 20px;
+}
+*/
+.pair{
+  border:10px solid yellow;
+  border-radius:10px;
+  position:absolute;
+}
+
+.pair:hover {
+  border: 20px;
+}
+
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+ 50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+ 100% {
+    transform: scale(0.5);
+    opacity: 1;
+
+  }
+}
+
+@keyframes bounce {
+  from, to {
+    top: 0;
+    animation-timing-function: ease-out;
+  }
+  50% {
+    top: 768px;
+    animation-timing-function: ease-in;
+  }
+}
