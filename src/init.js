@@ -62,11 +62,30 @@ $(document).ready(function() {
     $(this).removeClass('dancer').addClass('pair');
     closest.$node.removeClass('dancer').addClass('pair');
   });
+  /*
+  $('body').on("mouseenter mouseleave", ".dancer", function(event) {
+    console.log('got here');
+    $(this).toggleClass("mouseOverMe");
 
-  $('.dancer').mouseover(function() {
-    $(this).css("border", "20px");
-
+    console.log(this);
+  });
+*/
+  $('body').on("mouseenter", ".dancer", function(event) {
+    //console.log('got here');
+    $(this).addClass("mouseOverMe");
+  });
+  $('body').on("mouseleave", ".dancer", function(event) {
+   // console.log('got here');
+    $(this).removeClass("mouseOverMe");
   });
 
+  /*
+  $('.dancer').mouseover(function() {
+    console.log('got here');
+    $(this).css("border", "20px");
+    console.log(this);
+
+  });
+  */
 });
 
