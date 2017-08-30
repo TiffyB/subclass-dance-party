@@ -5,7 +5,7 @@ var makeDancer = function(top, left, timeBetweenSteps) {
 
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
-  this.step = this.step.bind(this);
+  //this.step = this.step.bind(this);
   this.setPosition = this.setPosition.bind(this);
   this.timeBetweenSteps = timeBetweenSteps;
   this.step(this.timeBetweenSteps);
@@ -28,7 +28,8 @@ makeDancer.prototype.step = function(timeBetweenSteps) {
   // it just schedules the next step
   //console.log(this.timeBetweenSteps);
   //var context = this;
-  setTimeout(this.step, this.timeBetweenSteps);
+  //console.log('coming from super class', this);
+  setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 makeDancer.prototype.setPosition = function(top, left) {

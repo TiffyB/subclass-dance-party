@@ -43,6 +43,8 @@ $(document).ready(function() {
 
   });
   $('body').on('click', '.dancer', function(event) {
+    var leftTarget;
+    var topTarget;
     var styleAttr = $(this).attr("style");
     var styleAttr = styleAttr.split(";");
     var top = Number(styleAttr[1].slice(6, styleAttr[1].length - 2));
@@ -50,17 +52,21 @@ $(document).ready(function() {
 
     var resultsArr = [];
     for (var i = 0; i < window.dancers.length; i++) {
-      var topTarget = window.dancers[i].top;
-      var leftTarget = window.dancers[i].left;
+      topTarget = window.dancers[i].top;
+      leftTarget = window.dancers[i].left;
       var pyth = Math.pow((Math.pow((top - topTarget), 2) + Math.pow((left - leftTarget), 2)), 0.5);
       resultsArr.push(Math.floor(pyth));
     }
-
+    console.log(resultsArr);
     var minValue = Math.min.apply(null, resultsArr.filter(Boolean));
     var index = resultsArr.indexOf(minValue);
     var closest = window.dancers[index];
-    $(this).removeClass('dancer').addClass('pair');
-    closest.$node.removeClass('dancer').addClass('pair');
+    console.log('node we are clikcing on', this);
+    console.log('closest pair', closest);
+    // $(this).removeClass('dancer').addClass('pair');
+    // closest.$node.removeClass('dancer').addClass('pair');
+    $(this).addClass('pair');
+    closest.$node.addClass('pair');
   });
   /*
   $('body').on("mouseenter mouseleave", ".dancer", function(event) {
